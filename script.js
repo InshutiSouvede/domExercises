@@ -19,8 +19,17 @@ function attachBuyEvents() {
             // button.parentElement.classList.toggle('sale')
             // console.log("You are ordering: ",button.parentElement.querySelector('input').value," ",button.parentElement.querySelector('h2').textContent)
             let table = document.querySelector('table')
-            // check if current item is not already in the list
-            if (!table.textContent.includes(button.parentElement.getAttribute('data-id'))) {
+
+            let rows = document.querySelectorAll('table tr'), trigger = 0
+            for (row of rows) {
+                let cols = row.querySelectorAll('td')
+                if (cols[0] && cols[0].textContent == button.parentElement.getAttribute('data-id')) {
+                    cols[2].textContent = button.parentElement.querySelector('input').value
+                    cols[4].textContent = parseInt(cols[2].textContent) * parseInt(cols[3].textContent)
+                    trigger = 1
+                }
+            }
+            if (trigger == 0) {
                 const row = document.createElement('tr')
                 const tdId = document.createElement('td')
                 tdId.textContent = button.parentElement.getAttribute('data-id')
@@ -35,6 +44,9 @@ function attachBuyEvents() {
                 tdTtl.textContent = parseInt(tdquantity.textContent) * parseInt(tdprice.textContent)
                 const tdDel = document.createElement('td')
                 tdDel.textContent = 'X'
+                tdDel.addEventListener('click', (e) => {
+                    e.target.parentElement.remove()
+                })
                 row.appendChild(tdId)
                 row.appendChild(tdproduct)
                 row.appendChild(tdquantity)
@@ -43,19 +55,6 @@ function attachBuyEvents() {
                 row.appendChild(tdDel)
 
                 table.appendChild(row)
-            }
-            else{
-                let rows = document.querySelectorAll('table tr')
-                for(row of rows){                    // all columns
-                    console.log(row)
-                    let cols = row.querySelectorAll('td')
-                    console.log("col 0: ",cols?.[0])
-                    if(cols[0] && cols[0].textContent ==button.parentElement.getAttribute('data-id')){
-                        cols[2].textContent = button.parentElement.querySelector('input').value
-                        cols[4].textContent = parseInt(cols[2].textContent) * parseInt(cols[3].textContent)
-
-                    }
-                }
             }
 
         })
