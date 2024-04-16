@@ -19,7 +19,7 @@ function attachBuyEvents() {
             // button.parentElement.classList.toggle('sale')
             // console.log("You are ordering: ",button.parentElement.querySelector('input').value," ",button.parentElement.querySelector('h2').textContent)
             let table = document.querySelector('table')
-            let ttrow = document.querySelector('tfoot > tr').querySelectorAll('th')
+            let ttrow = document.querySelector('tfoot tr').querySelectorAll('th')
             console.log('Hello',ttrow[1])
             let rows = document.querySelectorAll('table tr'), trigger = 0
             for (row of rows) {
@@ -52,7 +52,7 @@ function attachBuyEvents() {
 
                 const tdTtl = document.createElement('td')
                 tdTtl.textContent = parseInt(tdquantity.textContent) * parseInt(tdprice.textContent)
-                
+
                 const tdDel = document.createElement('td')
                 tdDel.textContent = 'X'
                 tdDel.addEventListener('click', (e) => {
