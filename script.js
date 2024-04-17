@@ -65,40 +65,30 @@ function allInOne(){
     console.log(pArr)
     let fcontent = '<p>'
     for (i = 0; i < pArr.length; i++) {
-        let charAdded = 0
+        let needsBg=0,ndEmo = 0,nepar =0
         // console.log(pArr[i].includes('\n')?"This includes a next line "+pArr[i]:"")
         if (pArr[i].length > 8) {
-            fcontent += ' <span style="background-color:yellow;">' + pArr[i] + "</span>"
-            charAdded = 1
+            needsBg =1
         }
-        if(pArr[i].includes('\n') && pArr[i].includes("?") ) {
-            let n = pArr.indexOf('\n')
-            let q = pArr.indexOf('?')
-            console.log("the word with nextline ", pArr[i]," it will become ",pArr[i].slice(0,n)+'</p><p>')
-            fcontent += " "+pArr[i].slice(0,q)+pArr[i].slice(q,n)+'</p><p>'
-            charAdded = 1
-            // console.log("encountered next line after", pArr[i - 1])
-        } 
-        else if(pArr[i].endsWith('\n')){
-            fcontent += " "+pArr[i].slice(0,pArr[i].length-1)+'</p><p>'
+        if(pArr[i].includes('\n')) {
+            nepar = 1
         }
-        else if (pArr[i].endsWith("?")) {
-            
-            // console.log("the word with ? ", pArr[i]," it will become ",pArr[i].slice(0,q)+'🤔')
-            fcontent += " "+pArr[i].slice(0,pArr[i].length-1)+'🤔'
-            charAdded = 1
-            // console.log("encountered next line after", par[i - 1])
-        } 
-    
-        if(!charAdded) {
-            fcontent += " " + pArr[i]
+        if(pArr[i].includes('?')){
+            ndEmo = 1
         }
-        // console.log(fcontent)
+        fcontent +=  needsBg&&ndEmo&&nepar? ' <span style="background-color:yellow;">' + pArr[i].replace('?','🤔').replace('\n','</p><p>') + "</span>" 
+        : needsBg&&ndEmo? ' <span style="background-color:yellow;">' + pArr[i].replace('?','🤔')+ "</span>"
+        :needsBg&&nepar?' <span style="background-color:yellow;">' + pArr[i].replace('\n','</p><p>')+ "</span>"
+        :ndEmo&&nepar? " "+ pArr[i].replace('?','🤔').replace('\n','</p><p>')
+        :ndEmo?" "+ pArr[i].replace('?','🤔')
+        :nepar?" "+ pArr[i].replace('\n','</p><p>')
+        :needsBg?' <span style="background-color:yellow;">' + pArr[i] + "</span>"
+        :" " + pArr[i]
     }
-    document.querySelector('p').innerHTML = fcontent
+    document.querySelector('p').innerHTML = fcontent+"</p>"
     let par = document.querySelector('p')
 
     par.insertAdjacentHTML("afterend", "<a href='https://forcemipsum.com'>Anotherr course</a>")
 
 }
-// allInOne()
+allInOne()
