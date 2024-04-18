@@ -21,7 +21,7 @@ function attachBuyEvents() {
             let table = document.querySelector('table')
             let ttrow = document.querySelector('tfoot tr').querySelectorAll('th')
             console.log('Hello',ttrow[1])
-            let rows = document.querySelectorAll('table tr'), trigger = 0
+            let rows = document.querySelectorAll('table tr'), rowfound = 0
             for (row of rows) {
                 let cols = row.querySelectorAll('td')
                 if (cols[0] && cols[0].textContent == button.parentElement.getAttribute('data-id')) {
@@ -32,10 +32,10 @@ function attachBuyEvents() {
 
 
                     ttrow[1].textContent = parseInt(ttrow[1].textContent)+ parseInt(cols[4].textContent)-pastPrice
-                    trigger = 1
+                    rowfound = 1
                 }
             }
-            if (trigger == 0) {
+            if (!rowfound) {
                 const row = document.createElement('tr')
 
                 const tdId = document.createElement('td')
