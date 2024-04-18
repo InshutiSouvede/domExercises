@@ -33,6 +33,7 @@ function attachBuyEvents() {
 
                     ttrow[1].textContent = parseInt(ttrow[1].textContent)+ parseInt(cols[4].textContent)-pastPrice
                     rowfound = 1
+                    break
                 }
             }
             if (!rowfound) {
