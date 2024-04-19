@@ -33,37 +33,76 @@ function promotion() {
     prost.textContent = parseInt(prost.textContent) * 1.25
 }
 promotion()
+function toggleYear() {
+    const subscriptions = document.querySelectorAll('.card-deck .card-body')
+    console.log("Subscription contain: ", subscriptions[0])
+    
+    // const pro = document.querySelector('#pro-plan .card-body')
+
+
+    const yearly = document.createElement('label')
+    const name = subscriptions[0].querySelector('button').textContent
+    yearly.innerHTML = '<input type="radio" name=' + name + ' id = "year' + name[0] + '" autocomplete="off"> Year'
+    subscriptions[0].insertAdjacentElement('afterbegin', yearly)
+
+
+    // check for event in a given card not general
+    yearly.addEventListener('click', (e) => {
+        let f = document.createElement('li')
+        f.innerHTML = '<b>2 Months free trial</b>'
+        console.log("Yearly was clicked")
+        console.log("The one that you clicked was in ", e.target.parentElement.innerHTML)
+        !subscriptions[0].querySelector('b')&&subscriptions[0].querySelector('ul').appendChild(f)
+    })
+
+    const monthly = document.createElement('label')
+    // monthly.setAttribute('for', 'month')
+    const bname = subscriptions[0].querySelector('button').textContent
+    monthly.innerHTML = '<input type="radio" name=' + bname + ' id = "month' + bname[0] + '" autocomplete="off" checked> Month'
+    subscriptions[0].insertAdjacentElement('afterbegin', monthly)
+
+    // check for event in a given card not general
+    monthly.addEventListener('click', (e) => {
+        console.log("you clicked monthy in ", e.target.parentElement.innerHTML)
+        subscriptions[0].querySelector('b') && subscriptions[0].querySelector('b').remove()
+    })
+
+
+}
+toggleYear()
 function toggleMonths() {
     const subscriptions = document.querySelectorAll('.card-deck .card-body')
-    let f = document.createElement('li')
-    f.innerHTML = '<b>2 Months free trial</b>'
-    const pro = document.querySelector('#pro-plan .card-body')
-    for (const card of subscriptions) {
-        console.log("This a where you are going to add a toggle", card)
-        const yearly = document.createElement('label')
-        const name = card.querySelector('button').textContent
-        yearly.innerHTML = '<input type="radio" name=' + name + ' id = "year'+ name[0] + '" autocomplete="off"> Year'
-        card.insertAdjacentElement('afterbegin', yearly)
+    console.log("Subscription contain: ", subscriptions[1])
+    
+    // const pro = document.querySelector('#pro-plan .card-body')
 
 
-        // check for event in a given card not general
-        yearly.addEventListener('click', (e) => {
-            console.log("Yearly was clicked")
-            !card.querySelector('b')&&card.querySelector('ul').appendChild(f)
-        })
+    const yearly = document.createElement('label')
+    const name = subscriptions[1].querySelector('button').textContent
+    yearly.innerHTML = '<input type="radio" name=' + name + ' id = "year' + name[0] + '" autocomplete="off"> Year'
+    subscriptions[1].insertAdjacentElement('afterbegin', yearly)
 
-        const monthly = document.createElement('label')
-        monthly.setAttribute('for', 'month')
-        const bname = card.querySelector('button').textContent
-        monthly.innerHTML = '<input type="radio" name=' + bname + ' id = "month'+ bname[0] + '" autocomplete="off" checked> Month'
-        card.insertAdjacentElement('afterbegin', monthly)
 
-         // check for event in a given card not general
-        monthly.addEventListener('click', (e) => {
-            console.log("The one that you clicked was in ",e.targ)
-            card.querySelector('b')&&card.querySelector('b').remove()
-        })
-    }
+    // check for event in a given card not general
+    yearly.addEventListener('click', (e) => {
+        let f = document.createElement('li')
+        f.innerHTML = '<b>2 Months free trial</b>'
+        console.log("Yearly was clicked")
+        console.log("The one that you clicked was in ", e.target.parentElement.innerHTML)
+        !subscriptions[1].querySelector('b')&&subscriptions[1].querySelector('ul').appendChild(f)
+    })
+
+    const monthly = document.createElement('label')
+    // monthly.setAttribute('for', 'month')
+    const bname = subscriptions[1].querySelector('button').textContent
+    monthly.innerHTML = '<input type="radio" name=' + bname + ' id = "month' + bname[0] + '" autocomplete="off" checked> Month'
+    subscriptions[1].insertAdjacentElement('afterbegin', monthly)
+
+    // check for event in a given card not general
+    monthly.addEventListener('click', (e) => {
+        console.log("you clicked monthy in ", e.target.parentElement.innerHTML)
+        subscriptions[1].querySelector('b') && subscriptions[1].querySelector('b').remove()
+    })
 
 
 }
