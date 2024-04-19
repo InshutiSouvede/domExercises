@@ -42,11 +42,11 @@ function toggleMonths() {
         console.log("This a where you are going to add a toggle", card)
         const yearly = document.createElement('label')
         const name = card.querySelector('button').textContent
-        yearly.innerHTML = '<input type="radio" name=' + name + ' id = "year"  autocomplete="off"> Year'
+        yearly.innerHTML = '<input type="radio" name=' + name + ' id = "year'+ name[0] + '" autocomplete="off"> Year'
         card.insertAdjacentElement('afterbegin', yearly)
 
 
-
+        // check for event in a given card not general
         yearly.addEventListener('click', (e) => {
             console.log("Yearly was clicked")
             !card.querySelector('b')&&card.querySelector('ul').appendChild(f)
@@ -54,10 +54,13 @@ function toggleMonths() {
 
         const monthly = document.createElement('label')
         monthly.setAttribute('for', 'month')
-        monthly.innerHTML = '<input type="radio" name=' + name + ' id = "month" autocomplete="off" checked> Month'
+        const bname = card.querySelector('button').textContent
+        monthly.innerHTML = '<input type="radio" name=' + bname + ' id = "month'+ bname[0] + '" autocomplete="off" checked> Month'
         card.insertAdjacentElement('afterbegin', monthly)
 
+         // check for event in a given card not general
         monthly.addEventListener('click', (e) => {
+            console.log("The one that you clicked was in ",e.targ)
             card.querySelector('b')&&card.querySelector('b').remove()
         })
     }
