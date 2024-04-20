@@ -1,22 +1,47 @@
-.timer-box{
+.timer{
     background-color: rgba(7, 1, 1, 0.884);
     margin: auto;
     width: 40%;
-    height: 40%;
+    height: 50%;
+    color: #fcfdfd;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+}
+.timer-box{
+    background-color: rgba(7, 1, 1, 0.884);
+    margin: 5% auto 5%;
     color: #fcfdfd;
     padding: 40px;
     display: flex;
     flex-direction: row;
-    margin-top: 10%;
+    /* margin: 10%; */
 }
 .card{
-    width: 150px;
+    width: 110px;
     height: 110px;
     text-align: center;
     border: 1px white;
-    background-color: blueviolet;
-    padding: 0 5px 25px;
+    background-color: rgb(78, 119, 76);
+    padding: auto;
     margin: 20px;
-    font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+}
+.card span{
+    text-transform:uppercase;
+    font-weight: 500;
+}
+button{
+    height: 60px;
+    width: 300px;
+    margin: auto;
+    border: #121313 15px;
+    border-radius: 15px;
+    color:  rgb(78, 119, 76);
+    font-size: large;
+}
+button:hover{
+    background-color:  rgb(78, 119, 76);
+    color: white;
 }
