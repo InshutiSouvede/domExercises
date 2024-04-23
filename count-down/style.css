@@ -10,22 +10,21 @@
     margin-top: 10%;
 }
 .timer-box{
-    background-color: rgba(7, 1, 1, 0.884);
-    margin: 5% auto 5%;
-    color: #fcfdfd;
-    padding: 40px;
-    display: flex;
-    flex-direction: row;
-    /* margin: 10%; */
+     background-color: rgba(7, 1, 1, 0.884);
+   /* margin: 5% 0 5%;  */
+     color: #fcfdfd;
+   padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;/*repeat(4, 1fr)*/
+    gap: 20px 20px;
 }
 .card{
-    width: 110px;
-    height: 110px;
+    grid-column: auto;
+    grid-row: auto;
     text-align: center;
     border: 1px white;
     background-color: rgb(78, 119, 76);
     padding: auto;
-    margin: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
 }
 .card span{
@@ -40,8 +39,10 @@ button{
     border-radius: 15px;
     color:  rgb(78, 119, 76);
     font-size: large;
+    margin-top: 5%;
 }
 button:hover{
     background-color:  rgb(78, 119, 76);
     color: white;
+    margin-top: 5%;
 }
