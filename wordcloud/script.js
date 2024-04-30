@@ -72,3 +72,4 @@ for (let i = 0; i < mostOccur.length; i++) {
 }
 cloudDiv.appendChild(p)
 
+

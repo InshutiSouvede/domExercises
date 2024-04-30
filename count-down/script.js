@@ -31,6 +31,7 @@
     console.log(sec.innerText)
 }
 let itval = setInterval(countDown,1000)
+
 function stopTimer(){
     clearInterval(itval)
 }
